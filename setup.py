@@ -53,7 +53,7 @@ setuptools.setup(
     
     install_requires=['netaddr', 'python-etcd>=0.4.3', 'subprocess32', 'flask', 'gunicorn', 'gevent'],
     dependency_links=[
-    "git+https://github.com/projectcalico/python-etcd.git",
-    "git+https://github.com/projectcalico/libcalico.git"
+    "git+https://github.com/jplana/python-etcd.git@0d0145f5e835aa032c97a0a5e09c4c68b7a03f66#egg=python-etcd-0.4.3",
+    "git+https://github.com/projectcalico/libcalico.git@v0.18.0"
     ]
 )

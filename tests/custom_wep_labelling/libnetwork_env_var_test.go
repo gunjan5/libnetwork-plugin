@@ -43,10 +43,10 @@ var _ = Describe("Running plugin with custom ENV", func() {
 				interface_name, mac, name, ip)))
 
 			// Check profile
-			tags := GetEtcdString(fmt.Sprintf("/calico/v1/policy/profile/%s/tags", name))
+			//tags := GetEtcdString(fmt.Sprintf("/calico/v1/policy/profile/%s/tags", name))
 			labels := GetEtcdString(fmt.Sprintf("/calico/v1/policy/profile/%s/labels", name))
 			rules := GetEtcdString(fmt.Sprintf("/calico/v1/policy/profile/%s/rules", name))
-			Expect(tags).Should(MatchJSON("[]"))
+			//Expect(tags).Should(MatchJSON("[]"))
 			Expect(labels).Should(MatchJSON(fmt.Sprintf(`{"projectcalico.org/group":"%s"}`, name)))
 			Expect(rules).Should(MatchJSON(fmt.Sprintf(`{"inbound_rules": [{"action": "allow","src_tag": "%s"}],"outbound_rules":[{"action": "allow"}]}`, name)))
 

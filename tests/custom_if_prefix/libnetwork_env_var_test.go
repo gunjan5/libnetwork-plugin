@@ -44,7 +44,7 @@ var _ = Describe("Running plugin with custom ENV", func() {
 			rules := GetEtcdString(fmt.Sprintf("/calico/v1/policy/profile/%s/rules", name))
 			Expect(tags).Should(MatchJSON("[]"))
 			Expect(labels).Should(MatchJSON(fmt.Sprintf(`{"projectcalico.org/group":"%s"}`, name)))
-			Expect(rules).Should(MatchJSON(fmt.Sprintf(`{"inbound_rules": [{"action": "allow","src_selector": projectcalico.org/group == \"%s\"}],"outbound_rules":[{"action": "allow"}]}`, name)))
+			Expect(rules).Should(MatchJSON(fmt.Sprintf(`{"inbound_rules": [{"action": "allow","src_selector": "projectcalico.org/group == \"%s\""}],"outbound_rules":[{"action": "allow"}]}`, name)))
 
 			// Check the interface exists on the Host - it has an autoassigned
 			// mac and ip, so don't check anything!

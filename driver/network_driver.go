@@ -291,7 +291,7 @@ func (d NetworkDriver) CreateEndpoint(request *network.CreateEndpointRequest) (*
 			},
 			Spec: api.ProfileSpec{
 				EgressRules:  []api.Rule{{Action: "allow"}},
-				IngressRules: []api.Rule{{Action: "allow", Source: api.EntityRule{Selector: fmt.Sprintf("projectcalico.org/group == %s", networkData.Name)}}},
+				IngressRules: []api.Rule{{Action: "allow", Source: api.EntityRule{Selector: fmt.Sprintf("projectcalico.org/group == \"%s\"", networkData.Name)}}},
 			},
 		}
 		if _, err := d.client.Profiles().Create(profile); err != nil {

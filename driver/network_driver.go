@@ -286,12 +286,12 @@ func (d NetworkDriver) CreateEndpoint(request *network.CreateEndpointRequest) (*
 		// the request if the profile already exists.
 		profile := &api.Profile{
 			Metadata: api.ProfileMetadata{
-				Name: networkData.Name,
+				Name:   networkData.Name,
 				Labels: map[string]string{"projectcalico.org/group": networkData.Name},
 			},
 			Spec: api.ProfileSpec{
 				EgressRules:  []api.Rule{{Action: "allow"}},
-				IngressRules: []api.Rule{{Action: "allow", Source: api.EntityRule{Selector: fmt.Sprintf("projectcalico.org/group == %s", conf.Name)}}},
+				IngressRules: []api.Rule{{Action: "allow", Source: api.EntityRule{Selector: fmt.Sprintf("projectcalico.org/group == %s", networkData.Name)}}},
 			},
 		}
 		if _, err := d.client.Profiles().Create(profile); err != nil {
